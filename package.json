@@ -1,0 +1,9 @@
+{
+  "name": "hikarock.dev",
+  "description": "",
+  "author": "hikarock <ping@hikarock.dev>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
