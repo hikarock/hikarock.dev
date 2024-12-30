@@ -5,8 +5,10 @@ import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
 import { Button } from "@/components/ui/button"
+import { AvatarComponent } from "@/components/AvatarComponent"
 ---
+
 <Layout>
-	<Welcome />
+	<AvatarComponent client:load src="https://github.com/hikarock.png" alt="hikarock" />
 	<Button>Hello World</Button>
 </Layout>
