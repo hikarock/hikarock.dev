@@ -15,7 +15,11 @@ export const Link = ({ href, external = true, children }: Props) => {
     >
       <span className="flex items-center">
         {children}
-        {external && <ExternalLinkIcon />}
+        {external && (
+          <span className="w-4">
+            <ExternalLinkIcon />
+          </span>
+        )}
       </span>
     </a>
   )
