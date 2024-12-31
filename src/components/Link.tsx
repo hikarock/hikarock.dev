@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
 
 type Props = {
   href: string
@@ -8,11 +9,14 @@ type Props = {
 export const Link = ({ href, external = true, children }: Props) => {
   return (
     <a
-      className="underline underline-offset-2"
+      className="underline underline-offset-2 inline-block"
       href={href}
       target={external ? '_blank' : '_self'}
     >
-      {children}
+      <span className="flex items-center">
+        {children}
+        {external && <ExternalLinkIcon />}
+      </span>
     </a>
   )
 }

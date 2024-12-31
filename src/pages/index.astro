@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro'
 import { AvatarComponent } from '@/components/AvatarComponent'
 import { ModeToggle } from '@/components/ModeToggle'
 import { Link } from '@/components/Link'
+import { SewingPinIcon } from '@radix-ui/react-icons'
 
 import { Badge } from '@/components/ui/badge'
 import {
@@ -59,7 +60,9 @@ import {
       </div>
       <div>
         <p class="leading-6">フロントエンド開発 / UX設計 / スクラムマスター</p>
-        <p class="leading-6">@札幌</p>
+        <p class="leading-6 flex items-center gap-1">
+          <SewingPinIcon />札幌
+        </p>
       </div>
 
       <div>
