@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro'
 import { AvatarComponent } from '@/components/AvatarComponent'
 import { ModeToggle } from '@/components/ModeToggle'
 import { Link } from '@/components/Link'
+import { Heading } from '@/components/Heading'
 import { SewingPinIcon } from '@radix-ui/react-icons'
 
 import { Badge } from '@/components/ui/badge'
@@ -52,7 +53,7 @@ import {
             src="https://github.com/hikarock.png"
             alt="hikarock"
           />
-          <h1 class="text-3xl font-extrabold">Hikari Tsuchiya (hikarock)</h1>
+          <Heading level={1}>Hikari Tsuchiya (hikarock)</Heading>
         </div>
         <div class="w-36px">
           <ModeToggle client:load />
@@ -66,14 +67,14 @@ import {
       </div>
 
       <div>
-        <h2 class="text-2xl font-semibold pb-4">私について</h2>
+        <Heading level={2}>私について</Heading>
         <p class="leading-6">
           フリーランスのエンジニアです。軸足はフロントエンド開発ですが、UX設計、スクラム運営、アジャイルコーチなどその時々で必要なことを手広くやります。
         </p>
       </div>
 
       <div>
-        <h2 class="text-2xl font-semibold pb-4">技術</h2>
+        <Heading level={2}>技術</Heading>
         <div class="flex flex-wrap gap-3">
           <Badge>TypeScript</Badge>
           <Badge>React</Badge>
@@ -92,7 +93,7 @@ import {
       </div>
 
       <div>
-        <h2 class="text-2xl font-semibold pb-4">経歴</h2>
+        <Heading level={2}>経歴</Heading>
         <div class="grid grid-flow-row auto-rows-max gap-4">
           <Card>
             <CardHeader>
@@ -209,8 +210,8 @@ import {
             </CardHeader>
             <CardContent>
               <p>
-                金融・証券・医療・物流系の業種のシステム開発を主に Java
-                で行っていました。また企業のウェブサイトの開発・運用を担当していました。
+                金融、証券、医療、物流等の業種システムを主に Java
+                で開発していました。また企業ウェブサイトの開発・運用を担当しました。
               </p>
             </CardContent>
           </Card>
@@ -218,7 +219,7 @@ import {
       </div>
 
       <div>
-        <h2 class="text-2xl font-semibold pb-4">登壇</h2>
+        <Heading level={2}>登壇</Heading>
         <div class="grid grid-flow-row auto-rows-max gap-4">
           <Card>
             <CardHeader>
@@ -247,7 +248,7 @@ import {
       </div>
 
       <div>
-        <h2 class="text-2xl font-semibold pb-4">資格</h2>
+        <Heading level={2}>資格</Heading>
         <div class="grid grid-flow-row auto-rows-max gap-4">
           <Card>
             <CardHeader>
@@ -265,7 +266,7 @@ import {
       </div>
 
       <div>
-        <h2 class="text-2xl font-semibold pb-4">趣味</h2>
+        <Heading level={2}>趣味</Heading>
         <div class="flex flex-wrap gap-3">
           <Badge>
             <Link href="https://booklog.jp/users/hika69">読書</Link>
@@ -282,7 +283,7 @@ import {
       </div>
 
       <div>
-        <h2 class="text-2xl font-semibold pb-4">連絡先</h2>
+        <Heading level={2}>連絡先</Heading>
         <div class="flex flex-wrap gap-3">
           <Badge>
             <Link href="mailto:ping@hikarock.dev" external={false}
