@@ -4,12 +4,294 @@ import '@/styles/globals.css'
 import Layout from '../layouts/Layout.astro'
 
 import { AvatarComponent } from '@/components/AvatarComponent'
+import { ModeToggle } from '@/components/ModeToggle'
+import { Link } from '@/components/Link'
+
+import { Badge } from '@/components/ui/badge'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 ---
 
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+  }
+  const isDark = getThemePreference() === 'dark'
+  document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
+
+  if (typeof localStorage !== 'undefined') {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark')
+      localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+  }
+</script>
+
 <Layout>
-  <AvatarComponent
-    client:load
-    src="https://github.com/hikarock.png"
-    alt="hikarock"
-  />
+  <div class="container mx-auto p-8">
+    <div class="grid grid-flow-row auto-rows-max gap-8 pb-64">
+      <div class="flex justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <AvatarComponent
+            client:load
+            src="https://github.com/hikarock.png"
+            alt="hikarock"
+          />
+          <h1 class="text-3xl font-extrabold">Hikari Tsuchiya (hikarock)</h1>
+        </div>
+        <div class="w-40px">
+          <ModeToggle client:load />
+        </div>
+      </div>
+      <div>
+        <p class="leading-6">フロントエンド開発 / UX設計 / スクラムマスター</p>
+        <p class="leading-6">@札幌</p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-semibold pb-4">私について</h2>
+        <p class="leading-6">
+          フリーランスのエンジニアです。軸足はフロントエンド開発ですが、UX設計、スクラム運営、アジャイルコーチなどその時々で必要なことを手広くやります。
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-semibold pb-4">技術</h2>
+        <div class="flex flex-wrap gap-3">
+          <Badge>TypeScript</Badge>
+          <Badge>React</Badge>
+          <Badge>Next.js</Badge>
+          <Badge>Material UI</Badge>
+          <Badge>shadcn/ui</Badge>
+          <Badge>Tailwind CSS</Badge>
+          <Badge>Astro</Badge>
+          <Badge>Git</Badge>
+          <Badge>OpenAPI</Badge>
+          <Badge>UX設計</Badge>
+          <Badge>スクラムマスター</Badge>
+          <Badge variant="secondary">Vue.js</Badge>
+          <Badge variant="secondary">Nuxt</Badge>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-semibold pb-4">経歴</h2>
+        <div class="grid grid-flow-row auto-rows-max gap-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>株式会社AIRVISA</CardTitle>
+              <CardDescription
+                >2023 - 現在 / 業務委託 / フロントエンドエンジニア</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                ビザ（在留資格）申請ができるオンラインサービス「<Link
+                  href="https://airvisa.online/">AIRVISA</Link
+                >」の、フロントエンド開発、UX設計に携わっています。
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>株式会社enechain</CardTitle>
+              <CardDescription
+                >2021 - 2023 / 正社員 / フロントエンドエンジニア・マネジャー</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                エネルギー商品を売り買いできるオンライントレーディングプラットフォーム「<Link
+                  href="https://enechain.co.jp/services">eSquare</Link
+                >」のフロントエンド開発とチームのマネージメントを担当しました。
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>株式会社one visa</CardTitle>
+              <CardDescription
+                >2018 - 2021 / 正社員 /
+                フロントエンドエンジニア・スクラムマスター</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                外国籍・行政書士向けの在留資格の申請サービス「one visa」「one
+                visa for
+                行政書士」のフロントエンド領域のリードと、スクラムマスターを担当しました。
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>株式会社CAMPFIRE</CardTitle>
+              <CardDescription
+                >2018 - 2019 / 業務委託 / フロントエンドエンジニア</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                少額のクラウドファンディング・サービス「polca（ポルカ）」の Web
+                版を開発しました。
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>株式会社ブクログ</CardTitle>
+              <CardDescription
+                >2012 - 2017 / GMOペパボからの出向 / シニアエンジニア</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                web本棚・ブックレビューサービス「<Link
+                  href="https://booklog.jp/">ブクログ</Link
+                >」のメイン開発者として Web
+                版・iOS版の設計・開発・運用を担当しました。また電子書籍の作成・販売プラットフォーム
+                「<Link href="https://puboo.jp/">パブー</Link
+                >」の運用を行いました。
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>GMOペパボ株式会社</CardTitle>
+              <CardDescription
+                >2011 - 2018 / 正社員 / シニアエンジニア</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                「ブクログ」、ハンドメイドマーケット 「<Link
+                  href="https://minne.com/">minne（ミンネ）</Link
+                >」iOS 版の開発に参画しました。
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>株式会社スポーツITソリューション</CardTitle>
+              <CardDescription
+                >2010 - 2011 / 業務委託 / フロントエンドエンジニア</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                競技施設の予約管理システムの設計・プロトタイプの開発を担当しました。
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>株式会社コスモス</CardTitle>
+              <CardDescription
+                >2006 - 2010 / 正社員 / プログラマ</CardDescription
+              >
+            </CardHeader>
+            <CardContent>
+              <p>
+                金融・証券・医療・物流系の業種のシステム開発を主に Java
+                で行っていました。また企業のウェブサイトの開発・運用を担当していました。
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-semibold pb-4">登壇</h2>
+        <div class="grid grid-flow-row auto-rows-max gap-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>プライベートで3年間チーム開発した話</CardTitle>
+              <CardDescription
+                >2014 / <Link
+                  href="https://yapcasia.org/2014/talk/show/bc6052f4-0c8b-11e4-aec0-ad686aeab6a4.html"
+                  >YAPC::Asia Tokyo 2014「欲しいものは作ればいい！
+                  〜Webアプリ10連発〜」</Link
+                ></CardDescription
+              >
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Rendrの話</CardTitle>
+              <CardDescription
+                >2014 / <Link
+                  href="https://yosuke-furukawa.hatenablog.com/entry/2014/08/28/022909"
+                  >東京Node学園 14時限目</Link
+                ></CardDescription
+              >
+            </CardHeader>
+          </Card>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-semibold pb-4">資格</h2>
+        <div class="grid grid-flow-row auto-rows-max gap-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>個人情報保護士認定試験</CardTitle>
+              <CardDescription>2018</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>基本情報技術者試験</CardTitle>
+              <CardDescription>2004</CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-semibold pb-4">趣味</h2>
+        <div class="flex flex-wrap gap-3">
+          <Badge>
+            <Link href="https://booklog.jp/users/hika69">読書</Link>
+          </Badge>
+          <Badge>
+            <Link href="https://filmarks.com/users/hika69">映画</Link>
+          </Badge>
+          <Badge>
+            <Link href="https://yamap.com/users/399643">登山</Link>
+          </Badge>
+          <Badge>マラソン</Badge>
+          <Badge>プログラミング</Badge>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-semibold pb-4">連絡先</h2>
+        <div class="flex flex-wrap gap-3">
+          <Badge>
+            <Link
+              href="mailto:ping@hikarock.dev?subject=hikarockへのお問い合わせ"
+              >メール</Link
+            >
+          </Badge>
+          <Badge>
+            <Link href="https://github.com/hikarock">GitHub</Link>
+          </Badge>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
