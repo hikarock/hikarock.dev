@@ -38,13 +38,13 @@ export const ModeToggle = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setThemeState('theme-light')}>
-          Light
+          ライト
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setThemeState('dark')}>
-          Dark
+          ダーク
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setThemeState('system')}>
-          System
+          自動
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -54,7 +54,7 @@ import {
           />
           <h1 class="text-3xl font-extrabold">Hikari Tsuchiya (hikarock)</h1>
         </div>
-        <div class="w-40px">
+        <div class="w-36px">
           <ModeToggle client:load />
         </div>
       </div>
@@ -285,9 +285,8 @@ import {
         <h2 class="text-2xl font-semibold pb-4">連絡先</h2>
         <div class="flex flex-wrap gap-3">
           <Badge>
-            <Link
-              href="mailto:ping@hikarock.dev?subject=hikarockへのお問い合わせ"
-              >メール</Link
+            <Link href="mailto:ping@hikarock.dev" external={false}
+              >ping@hikarock.dev</Link
             >
           </Badge>
           <Badge>
