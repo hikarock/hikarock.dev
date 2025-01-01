@@ -1,0 +1,36 @@
+---
+import '@/styles/globals.css'
+import BlogLayout from '@/layouts/BlogLayout.astro'
+import { Heading } from '@/components/Heading'
+
+const {
+  frontmatter: { title, pubDate },
+} = Astro.props
+
+const formattedPubDate = pubDate.toString().slice(0, 10)
+---
+
+<BlogLayout title={title}>
+  <div class="grid gap-8">
+    <div>
+      <Heading level={2}>{title}</Heading>
+      <div>
+        {formattedPubDate}
+      </div>
+    </div>
+
+    <div
+      class="prose
+        dark:prose-invert
+        prose-heading:font-semibold
+        prose-h1:text-xl
+        prose-h2:text-lg
+        prose-h3:text-base
+        prose-h4:text-base"
+    >
+      <slot />
+    </div>
+  </div>
+</BlogLayout>
+
+<style is:global></style>
