@@ -1,11 +1,11 @@
 ---
-import { SewingPinIcon } from '@radix-ui/react-icons'
+import { StickyNote, Pin } from 'lucide-react'
 
 import '@/styles/globals.css'
 
 import Layout from '@/layouts/Layout.astro'
 
-import { AvatarComponent } from '@/components/AvatarComponent'
+import { Avatar } from '@/components/Avatar'
 import { ModeToggle } from '@/components/ModeToggle'
 import { Link } from '@/components/Link'
 import { Heading } from '@/components/Heading'
@@ -25,11 +25,7 @@ import {
       <div class="grid gap-4">
         <div class="flex justify-between gap-4">
           <div class="flex items-center gap-4">
-            <AvatarComponent
-              client:load
-              src="https://github.com/hikarock.png"
-              alt="hikarock"
-            />
+            <Avatar client:load />
             <Heading level={1}>Hikari Tsuchiya (hikarock)</Heading>
           </div>
           <div class="flex items-center w-36px">
@@ -41,7 +37,7 @@ import {
             フロントエンド開発 / UX設計 / 認定スクラムマスター (CSM)
           </p>
           <p class="leading-6 flex items-center gap-1">
-            <SewingPinIcon />札幌
+            <Pin size={16} />札幌
           </p>
         </div>
       </div>
@@ -287,6 +283,17 @@ import {
           <Badge>
             <Link href="https://github.com/hikarock">GitHub</Link>
           </Badge>
+        </div>
+      </div>
+
+      <div>
+        <Heading level={2}>コンテンツ</Heading>
+        <div class="grid gap-3">
+          <Link href="/note" external={false}
+            ><div class="flex gap-1 align-center">
+              <StickyNote size={24} />ノート
+            </div></Link
+          >
         </div>
       </div>
     </div>

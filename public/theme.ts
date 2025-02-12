@@ -8,6 +8,7 @@ const getThemePreference = () => {
 }
 
 const isDark = getThemePreference() === 'dark'
+console.log(isDark)
 document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
 
 if (typeof localStorage !== 'undefined') {

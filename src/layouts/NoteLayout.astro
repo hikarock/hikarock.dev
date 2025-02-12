@@ -1,14 +1,15 @@
 ---
 import '@/styles/globals.css'
 import { Heading } from '@/components/Heading'
-import { AvatarComponent } from '@/components/AvatarComponent'
+import { Avatar } from '@/components/Avatar'
 import { ModeToggle } from '@/components/ModeToggle'
+import { StickyNote, Slash } from 'lucide-react'
 
 const { title } = Astro.props
-const fullTitle = (title ? `${title} - ` : '') + 'hikarock blog'
+const fullTitle = title ? `${title} - ` : '' + 'hikarock note'
 ---
 
-<script is:inline src="@/scripts/theme.ts"></script>
+<script is:inline src="/theme.ts"></script>
 
 <html lang="ja">
   <head>
@@ -26,21 +27,25 @@ const fullTitle = (title ? `${title} - ` : '') + 'hikarock blog'
         <div class="grid gap-4">
           <div class="flex justify-between gap-4">
             <div class="flex items-center gap-4">
-              <AvatarComponent
-                client:load
-                src="https://github.com/hikarock.png"
-                alt="hikarock"
-              />
+              <Avatar client:load />
               <Heading level={1}>
-                <a href="/blog">hikarock blog</a>
+                <a href="/">Hikari Tsuchiya (hikarock)</a>
+                <Slash />
+                <a href="/note">
+                  <StickyNote />
+                </a>
               </Heading>
             </div>
             <div class="flex items-center w-36px">
               <ModeToggle client:load />
             </div>
           </div>
+          <div class="grid gap-1">
+            <p class="leading-6">
+              思ったこと、考えたこと、わかったこと、よくわからないことの記録
+            </p>
+          </div>
         </div>
-
         <div>
           <slot />
         </div>

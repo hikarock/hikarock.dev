@@ -1,0 +1,45 @@
+---
+import '@/styles/globals.css'
+import NoteLayout from '@/layouts/NoteLayout.astro'
+import { Heading } from '@/components/Heading'
+import { Badge } from '@/components/ui/badge'
+
+const {
+  frontmatter: { title, pubDate },
+} = Astro.props
+
+const formattedPubDate = pubDate.toString().slice(0, 10)
+---
+
+<NoteLayout title={title}>
+  <div class="grid gap-8">
+    <div>
+      <div class="mb-4">
+        <Badge>
+          {formattedPubDate}
+        </Badge>
+      </div>
+      <div>
+        <Heading level={1}>{title} </Heading>
+      </div>
+    </div>
+
+    <div
+      class="prose
+        dark:prose-invert
+        prose-h1:text-2xl
+        prose-h1:first-child:pt-0
+        prose-h1:pt-8
+        prose-h2:text-lg
+        prose-h2:pt-8
+        prose-h3:text-base
+        prose-h3:pt-8
+        prose-h4:text-base
+        prose-h4:pt-8"
+    >
+      <slot />
+    </div>
+  </div>
+</NoteLayout>
+
+<style is:global></style>
