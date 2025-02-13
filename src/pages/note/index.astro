@@ -14,21 +14,19 @@ const allArticles = await Astro.glob('./*.md')
 ---
 
 <NoteLayout>
-  <ul>
-    {
-      allArticles.map(({ url, frontmatter: { title, pubDate } }) => {
-        const formattedPubDate = pubDate.toString().slice(0, 10)
-        return (
-          <a href={url}>
-            <Card>
-              <CardHeader>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription>{formattedPubDate}</CardDescription>
-              </CardHeader>
-            </Card>
-          </a>
-        )
-      })
-    }
-  </ul>
+  {
+    allArticles.map(({ url, frontmatter: { title, pubDate } }) => {
+      const formattedPubDate = pubDate.toString().slice(0, 10)
+      return (
+        <a href={url}>
+          <Card>
+            <CardHeader>
+              <CardTitle>{title}</CardTitle>
+              <CardDescription>{formattedPubDate}</CardDescription>
+            </CardHeader>
+          </Card>
+        </a>
+      )
+    })
+  }
 </NoteLayout>
